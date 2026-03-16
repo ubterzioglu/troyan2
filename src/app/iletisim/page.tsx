@@ -11,8 +11,8 @@ const contactInfo = [
       </svg>
     ),
     label: 'Adres',
-    value: 'Çanakkale Merkez',
-    sub: 'İstanbul Şubesi de hizmetinizdedir',
+    value: 'Karacaören Mah., Karacaören Cad. No:16/1-3',
+    sub: '17000 Çanakkale Merkez',
   },
   {
     icon: (
@@ -21,7 +21,7 @@ const contactInfo = [
       </svg>
     ),
     label: 'Telefon',
-    value: '+90 (286) 000 00 00',
+    value: '+90 532 540 05 17',
     sub: 'Pazartesi – Cuma, 08:00–18:00',
   },
   {

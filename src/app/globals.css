@@ -115,7 +115,7 @@ p { line-height: 1.7; color: #8a8a8a; }
   left: 100%;
 }
 
-/* Outline Button */
+/* Outline Button (dark bg için) */
 .btn-outline {
   display: inline-flex;
   align-items: center;
@@ -137,6 +137,29 @@ p { line-height: 1.7; color: #8a8a8a; }
   background: white;
   color: #1a1a1a;
   border-color: white;
+}
+
+/* Outline Button (light bg için) */
+.btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(26, 26, 26, 0.2);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-decoration: none;
+}
+
+.btn-outline-dark:hover {
+  border-color: #b87333;
+  color: #b87333;
 }
 
 /* Section Title */
@@ -187,7 +210,7 @@ p { line-height: 1.7; color: #8a8a8a; }
 }
 
 .animate-fadeInUp {
-  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 .delay-100 { animation-delay: 0.1s; }

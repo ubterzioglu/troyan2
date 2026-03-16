@@ -71,7 +71,7 @@ export default function HakkimizdaPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
-                <Link href="/iletisim" className="btn-outline" style={{ border: '1px solid rgba(26,26,26,0.2)', color: '#1a1a1a' }}>
+                <Link href="/iletisim" className="btn-outline-dark">
                   İletişim
                 </Link>
               </div>
@@ -111,7 +111,7 @@ export default function HakkimizdaPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <p className="text-bronze font-semibold tracking-[0.2em] uppercase text-xs mb-4">Kilometre Taşları</p>
-            <h2 className="font-display text-white section-title inline-flex" style={{ '--tw-ring-color': 'white' } as React.CSSProperties}>
+            <h2 className="font-display text-white section-title">
               Yolculuğumuz
             </h2>
           </div>
@@ -143,7 +143,7 @@ export default function HakkimizdaPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <p className="text-bronze font-semibold tracking-[0.2em] uppercase text-xs mb-4">Ekibimiz</p>
-            <h2 className="font-display text-charcoal section-title inline-flex">
+            <h2 className="font-display text-charcoal section-title">
               Deneyimli Profesyoneller
             </h2>
           </div>

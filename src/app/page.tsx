@@ -58,7 +58,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-charcoal">
         {/* Video background */}
         <video
           autoPlay
@@ -89,15 +89,15 @@ export default function HomePage() {
             <p className="text-bronze font-semibold tracking-[0.3em] uppercase text-sm mb-6 animate-fadeInUp">
               Çanakkale & İstanbul
             </p>
-            <h1 className="text-white mb-6 animate-fadeInUp delay-100" style={{ opacity: 0 }}>
+            <h1 className="text-white mb-6 animate-fadeInUp delay-100">
               <span className="block font-bold tracking-tight leading-none">TROYAN</span>
-              <span className="block text-white/90 mt-2" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>İNŞAAT</span>
+              <span className="block text-white/90 mt-2 text-4xl md:text-5xl lg:text-6xl">İNŞAAT</span>
             </h1>
-            <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-10 max-w-xl animate-fadeInUp delay-200" style={{ opacity: 0 }}>
+            <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-10 max-w-xl animate-fadeInUp delay-200">
               Kalite, estetik ve güven ile hayalinizdeki yapıları inşa ediyoruz.
               Her projede mükemmelliği, her detayda ustalığı sunuyoruz.
             </p>
-            <div className="flex flex-wrap gap-4 animate-fadeInUp delay-300" style={{ opacity: 0 }}>
+            <div className="flex flex-wrap gap-4 animate-fadeInUp delay-300">
               <Link href="/projeler" className="btn-bronze">
                 Projelerimizi Gör
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -187,7 +187,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <p className="text-bronze font-semibold tracking-[0.2em] uppercase text-xs mb-4">Değerlerimiz</p>
-            <h2 className="font-display text-charcoal section-title inline-flex">
+            <h2 className="font-display text-charcoal section-title">
               Her Projede Temel Aldığımız İlkeler
             </h2>
           </div>
@@ -297,7 +297,7 @@ export default function HomePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <a href="tel:+902860000000" className="btn-outline">
+            <a href="tel:+905325400517" className="btn-outline">
               Hemen Ara
             </a>
           </div>
