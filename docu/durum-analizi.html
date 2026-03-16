@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TROYAN İNŞAAT - Mevcut Durum Analizi</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #f7fafc;
+            padding: 40px 20px;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 2rem;
+            color: #1a365d;
+            margin-bottom: 8px;
+        }
+        .header h1 span { color: #d69e2e; }
+        .header p { color: #718096; }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .card h2 {
+            font-size: 1.2rem;
+            color: #1a365d;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .checklist {
+            list-style: none;
+        }
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .checklist li:last-child { border-bottom: none; }
+        
+        .status {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .status.ok { background: #c6f6d5; color: #22543d; }
+        .status.warn { background: #fef5e7; color: #975a16; }
+        .status.missing { background: #fed7d7; color: #c53030; }
+        
+        .content { flex: 1; }
+        .content strong { color: #1a365d; display: block; margin-bottom: 4px; }
+        .content small { color: #718096; }
+        
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        .summary-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .summary-box .number {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+        .summary-box.ok .number { color: #38a169; }
+        .summary-box.warn .number { color: #d69e2e; }
+        .summary-box.missing .number { color: #e53e3e; }
+        .summary-box .label {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-top: 4px;
+        }
+        
+        .section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 600px) {
+            .section-grid { grid-template-columns: 1fr; }
+            .summary { grid-template-columns: 1fr; }
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .badge-ok { background: #c6f6d5; color: #22543d; }
+        .badge-warn { background: #fef5e7; color: #975a16; }
+        .badge-missing { background: #fed7d7; color: #c53030; }
+        
+        .design-options {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+        .design-options h2 {
+            color: #d69e2e;
+            margin-bottom: 20px;
+            border: none;
+        }
+        .option {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+        .option h3 { margin-bottom: 8px; color: #fff; }
+        .option p { opacity: 0.9; font-size: 0.95rem; }
+        .option ul {
+            margin-top: 12px;
+            padding-left: 20px;
+            opacity: 0.9;
+        }
+        .option li { margin: 4px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><span>TROYAN</span> İNŞAAT</h1>
+            <p>Mevcut Durum Analizi — Müşteri İstekleri Karşılanma Durumu</p>
+        </header>
+        
+        <div class="summary">
+            <div class="summary-box ok">
+                <div class="number">12</div>
+                <div class="label">Tamamlandı ✅</div>
+            </div>
+            <div class="summary-box warn">
+                <div class="number">4</div>
+                <div class="label">Kısmen / Geçici ⚠️</div>
+            </div>
+            <div class="summary-box missing">
+                <div class="number">2</div>
+                <div class="label">Eksik ❌</div>
+            </div>
+        </div>
+        
+        <div class="section-grid">
+            <div class="card">
+                <h2>🏠 Ana Sayfa</h2>
+                <ul class="checklist">
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>Hero Bölümü</strong>
+                            <small>Video arka plan (Pexels'ten geçici)</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>Temel Değerler</strong>
+                            <small>4 kartlı görsel sunum</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>Proje Önizleme</strong>
+                            <small>3 proje kartları</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>Hakkımızda Bölümü</strong>
+                            <small>Şirket tanıtımı ve CTA</small>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2>🏢 Hakkımızda</h2>
+                <ul class="checklist">
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>Şirket Tanıtımı</strong>
+                            <small>Misyon ve vizyon metinleri</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>Temel Değerler</strong>
+                            <small>6 değer kartı (emoji ile)</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>Faaliyet Alanları</strong>
+                            <small>Konut, Ticari, Kentsel Dönüşüm</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>Yol Haritası</strong>
+                            <small>Kuruluş → Bugün timeline</small>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2>🏗️ Projeler</h2>
+                <ul class="checklist">
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>KAYA KENT SİTESİ</strong>
+                            <small>100 daire, 16.000 m², Çanakkale</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>KESKİN CİTY SİTESİ</strong>
+                            <small>Çanakkale merkez</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>ON4 VILLAS</strong>
+                            <small>14 villa, 8.400 m², Tuzla/İstanbul</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="status warn">⚠</span>
+                        <div class="content">
+                            <strong>Proje Görselleri</strong>
+                            <small>Placeholder SVG kullanılıyor (gerçek görseller eklenecek)</small>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h2>📞 İletişim</h2>
+                <ul class="checklist">
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>Adres</strong>
+                            <small>Karacaören, Çanakkale</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>Telefon</strong>
+                            <small>(+90) 532 540 05 17</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>Çalışma Saatleri</strong>
+                            <small>Pzt-Cuma: 08-18, Cmt: 09-14</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="status ok">✓</span>
+                        <div class="content">
+                            <strong>İletişim Formu</strong>
+                            <small>Çalışır durumda (console.log)</small>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="status warn">⚠</span>
+                        <div class="content">
+                            <strong>Harita</strong>
+                            <small>Placeholder (Google Maps entegrasyonu yok)</small>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📋 Genel Site Özellikleri</h2>
+            <ul class="checklist">
+                <li>
+                    <span class="status ok">✓</span>
+                    <div class="content">
+                        <strong>Responsive Tasarım</strong>
+                        <small>Mobil, tablet ve masaüstü uyumlu</small>
+                    </div>
+                </li>
+                <li>
+                    <span class="status ok">✓</span>
+                    <div class="content">
+                        <strong>Navigasyon</strong>
+                        <small>Header + Footer, tüm sayfalara erişim</small>
+                    </div>
+                </li>
+                <li>
+                    <span class="status ok">✓</span>
+                    <div class="content">
+                        <strong>Türkçe Dil</strong>
+                        <small>Tüm içerikler Türkçe</small>
+                    </div>
+                </li>
+                <li>
+                    <span class="status ok">✓</span>
+                    <div class="content">
+                        <strong>Sosyal Medya Linkleri</strong>
+                        <small>Twitter, Instagram, LinkedIn ikonları</small>
+                    </div>
+                </li>
+                <li>
+                    <span class="status warn">⚠</span>
+                    <div class="content">
+                        <strong>Video Arka Plan</strong>
+                        <small>Pexels'ten geçici video (orijinal videolar büyük)</small>
+                    </div>
+                </li>
+                <li>
+                    <span class="status missing">✗</span>
+                    <div class="content">
+                        <strong>Logo</strong>
+                        <small>Henüz eklenmedi (logo.docx boş)</small>
+                    </div>
+                </li>
+                <li>
+                    <span class="status missing">✗</span>
+                    <div class="content">
+                        <strong>E-posta Adresi</strong>
+                        <small>İletişim bilgilerinde belirtilmemiş</small>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="design-options">
+            <h2>🎨 Tasarım İyileştirme Seçenekleri</h2>
+            <p style="opacity: 0.9; margin-bottom: 20px;">Mevcut site fonksiyonel ancak görsel olarak "generic" (sıradan) kalıyor. İşte önerilen 3 yaklaşım:</p>
+            
+            <div class="option">
+                <h3>1. Mevcut Tasarımı Koru (Minimal Değişiklik)</h3>
+                <ul>
+                    <li>Sadece gerçek proje görsellerini ekle</li>
+                    <li>Logo ve e-posta adresini tamamla</li>
+                    <li>Typography'yi biraz iyileştir (font değişikliği)</li>
+                    <li><strong>Maliyet:</strong> Düşük | <strong>Etki:</strong> Orta</li>
+                </ul>
+            </div>
+            
+            <div class="option">
+                <h3>2. Industrial Modern (Önerilen)</h3>
+                <ul>
+                    <li>Güçlü tipografi (industrial + elegant font kombinasyonu)</li>
+                    <li>İnşaat dokuları: beton, çelik, ahşap görselleri</li>
+                    <li>Scroll animasyonları ve parallax efektler</li>
+                    <li>Koyu tema + altın/bronz vurgular</li>
+                    <li><strong>Maliyet:</strong> Orta | <strong>Etki:</strong> Yüksek</li>
+                </ul>
+            </div>
+            
+            <div class="option">
+                <h3>3. Premium Luxury</h3>
+                <ul>
+                    <li>Lüks villa projelerine odaklı, high-end estetik</li>
+                    <li>Büyük görseller, gallery slider'lar</li>
+                    <li>Smooth page transitions, mikro-interaksiyonlar</li>
+                    <li>Özel imleç, grain texture overlay</li>
+                    <li><strong>Maliyet:</strong> Yüksek | <strong>Etki:</strong> Çok Yüksek</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px; color: #718096;">
+            <p>Hangi tasarım yönünü seçtiğinizi bana bildirin.</p>
+        </div>
+    </div>
+</body>
+</html>
