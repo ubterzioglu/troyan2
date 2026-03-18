@@ -41,29 +41,30 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/">
+          <Link href="/" className="group">
             <div className={`font-display transition-colors duration-300 ${logoColor}`}>
-              <span className="text-2xl md:text-3xl font-bold tracking-tight">TROYAN</span>
-              <span className={`block text-xs md:text-sm tracking-[0.3em] uppercase transition-colors duration-300 ${logoSubColor}`}>
+              <span className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight group-hover:text-bronze transition-colors">TROYAN</span>
+              <span className={`block text-[10px] sm:text-xs md:text-sm tracking-[0.25em] sm:tracking-[0.3em] uppercase transition-colors duration-300 ${logoSubColor}`}>
                 İnşaat
               </span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium tracking-wide transition-colors duration-300 ${textColor} ${
-                  pathname === link.href ? 'text-bronze!' : ''
+                className={`text-sm font-medium tracking-wide transition-colors duration-300 relative group ${textColor} ${
+                  pathname === link.href ? '!text-bronze' : ''
                 }`}
               >
                 {link.label}
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-bronze transition-all duration-300 group-hover:w-full ${pathname === link.href ? 'w-full' : ''}`} />
               </Link>
             ))}
-            <Link href="/iletisim" className="btn-bronze text-sm py-2.5 px-6">
+            <Link href="/iletisim" className="btn-bronze text-sm py-2 px-5 lg:py-2.5 lg:px-6">
               Teklif Al
             </Link>
           </nav>
@@ -84,13 +85,15 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 border-t border-current/10">
-            <div className="flex flex-col gap-4 pt-4">
+          <nav className="md:hidden mt-4 pb-4 border-t border-white/10 bg-charcoal/95 backdrop-blur-md rounded-lg mt-2 p-4">
+            <div className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium tracking-wide transition-colors duration-300 ${textColor}`}
+                  className={`text-sm font-medium tracking-wide transition-colors duration-300 py-2 ${
+                    pathname === link.href ? 'text-bronze' : 'text-white/80 hover:text-white'
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -98,7 +101,7 @@ export default function Header() {
               ))}
               <Link
                 href="/iletisim"
-                className="btn-bronze text-sm py-2.5 px-6 self-start mt-2"
+                className="btn-bronze text-sm py-2.5 px-6 self-start mt-2 text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Teklif Al

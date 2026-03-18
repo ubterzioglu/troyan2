@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import React from 'react';
 
 export default function Footer() {
   return (
@@ -11,10 +12,10 @@ export default function Footer() {
 
           {/* Brand — 5 cols */}
           <div className="lg:col-span-5">
-            <div className="font-display mb-6">
-              <span className="text-3xl font-bold tracking-tight text-white">TROYAN</span>
-              <span className="block text-sm tracking-[0.3em] uppercase text-bronze mt-1">İnşaat</span>
-            </div>
+            <Link href="/" className="inline-block font-display mb-6 group">
+              <span className="text-2xl md:text-3xl font-bold tracking-tight text-white group-hover:text-bronze transition-colors">TROYAN</span>
+              <span className="block text-xs md:text-sm tracking-[0.3em] uppercase text-bronze mt-1">İnşaat</span>
+            </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
               Çanakkale ve İstanbul'da kalite, estetik ve güven ile inşaat hizmetleri sunuyoruz.
               Her projede mükemmelliği hedefliyoruz.

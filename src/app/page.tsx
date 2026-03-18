@@ -66,12 +66,18 @@ export default function HomePage() {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
+          poster="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1920"
         >
           <source
             src="https://videos.pexels.com/video-files/5657803/5657803-hd_1920_1080_30fps.mp4"
             type="video/mp4"
           />
         </video>
+        {/* Fallback background image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{backgroundImage: 'url(https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1920)'}}
+        />
 
         {/* Overlays */}
         <div className="absolute inset-0 video-overlay" />
@@ -89,9 +95,9 @@ export default function HomePage() {
             <p className="text-bronze font-semibold tracking-[0.3em] uppercase text-sm mb-6 animate-fadeInUp">
               Çanakkale & İstanbul
             </p>
-            <h1 className="text-white mb-6 animate-fadeInUp delay-100">
-              <span className="block font-bold tracking-tight leading-none">TROYAN</span>
-              <span className="block text-white/90 mt-2 text-4xl md:text-5xl lg:text-6xl">İNŞAAT</span>
+            <h1 className="text-white mb-6 animate-fadeInUp delay-100 leading-[0.9]">
+              <span className="block font-bold tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-8xl">TROYAN</span>
+              <span className="block text-white/90 mt-3 text-3xl sm:text-4xl md:text-5xl tracking-[0.15em]">İNŞAAT</span>
             </h1>
             <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-10 max-w-xl animate-fadeInUp delay-200">
               Kalite, estetik ve güven ile hayalinizdeki yapıları inşa ediyoruz.
@@ -119,16 +125,16 @@ export default function HomePage() {
       </section>
 
       {/* ── STATS ─────────────────────────────────────────── */}
-      <section className="py-16 bg-charcoal relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-charcoal relative overflow-hidden">
         <div className="absolute inset-0 opacity-5 grid-lines" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x md:divide-white/10">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center px-8">
-                <div className="text-4xl md:text-5xl font-display font-bold text-bronze mb-2">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-white/10">
+            {stats.map((stat, index) => (
+              <div key={stat.label} className="text-center px-4 md:px-8 py-2 md:py-0">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-bronze mb-1 md:mb-2">
                   {stat.value}
                 </div>
-                <div className="text-white/50 text-sm tracking-wide uppercase">{stat.label}</div>
+                <div className="text-white/60 text-xs md:text-sm tracking-wide uppercase">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -136,7 +142,7 @@ export default function HomePage() {
       </section>
 
       {/* ── ABOUT ─────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-cream grid-lines relative">
+      <section className="py-20 md:py-28 bg-cream relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             {/* Text */}
@@ -163,7 +169,7 @@ export default function HomePage() {
 
             {/* Visual */}
             <div className="relative">
-              <div className="aspect-[4/5] bg-charcoal-light rounded-none relative overflow-hidden">
+              <div className="aspect-[4/3] md:aspect-[4/5] bg-charcoal-light rounded-none relative overflow-hidden shadow-xl">
                 <div className="absolute inset-0 opacity-30" style={{
                   backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(184,115,51,0.1) 20px, rgba(184,115,51,0.1) 21px)`
                 }} />
@@ -176,7 +182,7 @@ export default function HomePage() {
                 </div>
               </div>
               {/* Floating accent */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-bronze/10 border border-bronze/20" />
+              <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-24 h-24 md:w-32 md:h-32 bg-bronze/20 border-2 border-bronze/30 shadow-lg" />
             </div>
           </div>
         </div>
@@ -192,16 +198,16 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
             {values.map((value, index) => (
               <div
                 key={index}
-                className={`card-luxury p-8 lg:p-10 ${index % 2 === 1 ? 'md:mt-12' : ''}`}
+                className={`card-luxury p-6 md:p-8 lg:p-10 ${index % 2 === 1 ? 'md:mt-8 lg:mt-12' : ''}`}
               >
-                <span className="font-display text-5xl font-bold text-bronze/15 leading-none block mb-4">
+                <span className="font-display text-4xl md:text-5xl font-bold text-bronze/20 leading-none block mb-3 md:mb-4">
                   {value.number}
                 </span>
-                <h3 className="font-display text-2xl font-semibold text-charcoal mb-3">
+                <h3 className="font-display text-xl md:text-2xl font-semibold text-charcoal mb-2 md:mb-3">
                   {value.title}
                 </h3>
                 <p className="text-concrete leading-relaxed">{value.desc}</p>
@@ -237,31 +243,32 @@ export default function HomePage() {
                 className={`group block relative ${index % 2 === 1 ? 'md:ml-auto md:mr-0' : ''}`}
                 style={{ maxWidth: index % 2 === 1 ? '90%' : '100%' }}
               >
-                <div className="aspect-[21/9] bg-charcoal-light overflow-hidden relative">
-                  {/* Grid pattern */}
-                  <div className="absolute inset-0 opacity-20" style={{
-                    backgroundImage: `linear-gradient(to right, rgba(184,115,51,0.3) 1px, transparent 1px), linear-gradient(to bottom, rgba(184,115,51,0.3) 1px, transparent 1px)`,
-                    backgroundSize: '60px 60px'
+                <div className="aspect-[16/9] md:aspect-[21/9] bg-charcoal-light overflow-hidden relative group-hover:shadow-2xl transition-shadow duration-500">
+                  {/* Subtle gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-charcoal-light/80 to-charcoal/90" />
+                  <div className="absolute inset-0 opacity-10" style={{
+                    backgroundImage: `linear-gradient(to right, rgba(184,115,51,0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(184,115,51,0.5) 1px, transparent 1px)`,
+                    backgroundSize: '40px 40px'
                   }} />
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-bronze/0 group-hover:bg-bronze/10 transition-colors duration-500" />
                   {/* Content */}
                   <div className="absolute inset-0 flex items-end p-8 md:p-12">
                     <div>
-                      <span className="text-bronze/70 text-xs tracking-[0.2em] uppercase font-semibold block mb-2">
-                        {project.category} · {project.location}
+                      <span className="text-bronze text-xs tracking-[0.15em] uppercase font-semibold block mb-2">
+                        {project.category} — {project.location}
                       </span>
-                      <h3 className="font-display text-2xl md:text-3xl font-bold text-white">
+                      <h3 className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-white group-hover:text-bronze transition-colors duration-300">
                         {project.title}
                       </h3>
                     </div>
                   </div>
                   {/* Year watermark */}
-                  <span className="absolute top-6 right-6 text-white/10 font-display text-6xl font-bold leading-none">
+                  <span className="absolute top-4 right-4 md:top-6 md:right-6 text-white/5 font-display text-4xl md:text-6xl font-bold leading-none">
                     {project.year}
                   </span>
                   {/* Arrow */}
-                  <div className="absolute top-6 right-6 w-10 h-10 bg-bronze flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-bronze flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110">
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -274,19 +281,20 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA ─────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-charcoal relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-charcoal relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
             backgroundSize: '32px 32px'
           }} />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-bronze font-semibold tracking-[0.2em] uppercase text-xs mb-6">Başlayalım</p>
-          <h2 className="font-display text-white mb-6">
+          <h2 className="font-display text-white mb-4 md:mb-6 text-2xl md:text-3xl lg:text-4xl">
             Hayalinizdeki Projeyi Birlikte Hayata Geçirelim
           </h2>
-          <p className="text-white/50 text-lg leading-relaxed mb-10">
+          <p className="text-white/60 text-base md:text-lg leading-relaxed mb-8 md:mb-10 max-w-2xl mx-auto">
             Ücretsiz keşif ve danışmanlık için bugün bizimle iletişime geçin.
             Uzman ekibimiz size en iyi çözümü sunmak için hazır.
           </p>
